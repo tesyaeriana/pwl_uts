@@ -13,11 +13,12 @@
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Id</th>
-                  <th>Nama </th>
+                  <th>ID</th>
+                  <th>Nama</th>
                   <th>Alamat</th>
-                  <th>No_Hp</th>
-                 
+                  <th>No HP</th>
+                
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -29,7 +30,7 @@
                       <td>{{$k->nama_pelanggan}}</td>
                       <td>{{$k->alamat_pelanggan}}</td>
                       <td>{{$k->no_hp}}</td>
-                     
+                    
                       <td>
                         <a href="{{url('/pelanggan/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
 
