@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
+use App\Models\PelangganModel;
 use Illuminate\Http\Request;
 
 class PelangganController extends Controller
@@ -14,7 +15,9 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $plg = PelangganModel::all();
+        return view('pelanggan')
+        ->with('plg',$plg);
     }
 
     /**
@@ -24,7 +27,8 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        return view('pelanggan')
+        ->with('url_form',url('/pelanggan'));
     }
 
     /**
@@ -35,7 +39,17 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_pelanggan'=>'required|string|max:7|unique:pelanggan,id',
+            'nama_ppelanggan'=>'required|string|max:50',
+            'alamat_pelanggan'=>'required|string|max:255',
+            'no_hp'=>'required|digits_between:6,15',
+           
+        ]);
+        $data = PelangganModel::create($request->except(['_token']));
+
+        return redirect('produk')
+        ->with('success','Data Pelanggan Berhasil Ditambahkan');
     }
 
     /**
@@ -44,7 +58,7 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pelanggan $pelanggan)
+    public function show(PelangganModel $pelanggan)
     {
         //
     }
@@ -55,9 +69,11 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pelanggan $pelanggan)
+    public function edit($id)
     {
-        //
+        $pelanggan=PelangganModel::find($id);
+        return view('create_pelanggan')
+        ->with('url_form',url('/pelanggan/'.$id));
     }
 
     /**
@@ -67,9 +83,18 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pelanggan $pelanggan)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_pelanggan'=>'required|string|max:7|unique:pelanggan,id,'.$id,
+            'nama_ppelanggan'=>'required|string|max:50',
+            'alamat_pelanggan'=>'required|string|max:255',
+            'no_hp'=>'required|digits_between:6,15',
+           
+        ]);
+        $data = PelangganModel::where('id','=',$id)->update($request->except(['_token','_method']));
+        return redirect('pelanggan')
+        ->with('success','Pelanggan berhasil diedit');
     }
 
     /**
@@ -78,7 +103,7 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pelanggan $pelanggan)
+    public function destroy(PelangganModel $pelanggan)
     {
         //
     }
