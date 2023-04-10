@@ -30,14 +30,14 @@
           <a href="{{url('/dashboard')}}" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Dashboard           </p>
+              Dashboard</p>
           </a>
          
         <li class="nav-item">
-          <a href="{{url('/profile')}}" class="nav-link">
+          <a href="{{url('/karyawan')}}" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Admin 
+              Karyawan 
             </p>
           </a>
         </li>
