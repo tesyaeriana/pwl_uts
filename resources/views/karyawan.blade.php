@@ -18,6 +18,7 @@
                   <th>Alamat</th>
                   <th>No HP</th>
                   <th>Gaji</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>

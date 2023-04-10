@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,8 @@ Route::get('/logout',[LoginController::class,'logout']);
 Route::middleware(['auth'])->group(function(){
     Route::get('/',[DashboardController::class, 'index']);
     Route::resource('produk', ProdukController::class)->parameter('produk','id');
+    Route::resource('karyawan', KaryawanController::class)->parameter('karyawan','id');
+    
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
