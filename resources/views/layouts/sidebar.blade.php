@@ -49,6 +49,22 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{url('/pelanggan')}}" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+              Pelanggan 
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{url('/jadwal')}}" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+              Jadwal 
+            </p>
+          </a>
+        </li>
        
         
         

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/',[DashboardController::class, 'index']);
     Route::resource('produk', ProdukController::class)->parameter('produk','id');
     Route::resource('karyawan', KaryawanController::class)->parameter('karyawan','id');
-    
+    Route::resource('jadwal', JadwalController::class)->parameter('jadwal','id');
+    Route::resource('pelanggan', PelangganController::class)->parameter('pelanggan','id');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

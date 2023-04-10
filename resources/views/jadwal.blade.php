@@ -5,36 +5,38 @@
     <div class="card">
         <div class="card-header border-0">
           <div class="d-flex justify-content-between">
-            <h3 class="card-title">Daftar Produk</h3>
+            <h3 class="card-title">Daftar Jadwal</h3>
           </div>
           <div class="card-body">
-            <a href="{{url('produk/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
+            <a href="{{url('jadwal/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
             <table class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Kode Produk</th>
-                  <th>Nama Produk</th>
-                  <th>Kategori</th>
-                  <th>Harga</th>
-                  <th>Stok</th>
+                  <th>Kode Jadwal</th>
+                  <th>Nama Pemilik</th>
+                  <th>Nama Peliharaan</th>
+                  <th>Layanan</th>
+                  <th>Tanggal Masuk</th>
+                  <th>Tanggal Keluar</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
-                @if ($prd->count() > 0)
-                  @foreach ($prd as $i => $k)
+                @if ($jdw->count() > 0)
+                  @foreach ($jdw as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
-                      <td>{{$k->kode}}</td>
-                      <td>{{$k->nama_produk}}</td>
-                      <td>{{$k->kategori_produk}}</td>
-                      <td>{{$k->harga}}</td>
-                      <td>{{$k->stok}}</td>
+                      <td>{{$k->kode_jadwal}}</td>
+                      <td>{{$k->nama_pemilik}}</td>
+                      <td>{{$k->nama_peliharaan}}</td>
+                      <td>{{$k->layanan}}</td>
+                      <td>{{$k->tgl_msk}}</td>
+                      <td>{{$k->tgl_klr}}</td>
                       <td>
-                        <a href="{{url('/produk/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
 
-                        <form method="POST" action="{{url('/produk/'.$k->id)}}">
+                        <form method="POST" action="{{url('/jadwal/'.$k->id)}}">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-sm btn-danger">Delete</button>
