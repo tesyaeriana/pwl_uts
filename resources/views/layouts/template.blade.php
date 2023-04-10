@@ -16,7 +16,7 @@
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
-  @include('layout.navbar')
+  @include('layouts.navbar')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -28,7 +28,7 @@
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
     <!-- Sidebar -->
-    @include('layout.sidebar')
+    @include('layouts.sidebar')
     <!-- /.sidebar -->
   </aside>
 
@@ -61,7 +61,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-@include('layout.footer')
+@include('layouts.footer')
   
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     function index(){
-        return view(('layout.template'));
+        return view(('layouts.template'));
     }
 }

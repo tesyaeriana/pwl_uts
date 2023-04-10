@@ -16,7 +16,7 @@ class ProdukController extends Controller
     public function index()
     {
         $prd = ProdukModel::all();
-        return view('produk.produk')
+        return view('produk')
             ->with('prd', $prd);
     }
 
@@ -27,7 +27,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('create_produk')
+        ->with('url_form',url('/produk'));
     }
 
     /**
@@ -38,7 +39,17 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode'=>'required|string|max:5|unique:produk,kode',
+            'nama_produk'=>'required|string|max:50',
+            'kategori_produk'=>'required|string|max:50',
+            'harga'=>'required|string|max:10',
+            'stok'=>'required|string|max:5'
+        ]);
+        $data = ProdukModel::create($request->except(['_token']));
+
+        return redirect('produk')
+        ->with('success','Data Produk Berhasil Ditambahkan');
     }
 
     /**
