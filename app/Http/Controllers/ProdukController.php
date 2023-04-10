@@ -69,9 +69,12 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProdukModel $produk)
+    public function edit($id)
     {
-        //
+        $produk=ProdukModel::find($id);
+        return view('create_produk')
+            ->with('prd',$produk)
+            ->with('url_form',url('/produk/'.$id));
     }
 
     /**
@@ -81,9 +84,18 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProdukModel $produk)
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'kode'=>'required|string|max:5|unique:produk,kode,'.$id,
+            'nama_produk'=>'required|string|max:50',
+            'kategori_produk'=>'required|string|max:50',
+            'harga'=>'required|string|max:10',
+            'stok'=>'required|string|max:5'
+        ]);
+        $data = ProdukModel::where('id','=',$id)->update($request->except(['_token', '_method']));
+        return redirect('produk')
+            ->with('success','Data berhasil di update');
     }
 
     /**
@@ -92,8 +104,10 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProdukModel $produk)
+    public function destroy($id)
     {
-        //
+        ProdukModel::where('id','=',$id)->delete();
+        return redirect('produk')
+        ->with('success','data Berhasil Dihapus');
     }
 }
