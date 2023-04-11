@@ -15,9 +15,13 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jdw = JadwalModel::all();
+        if (request('search')) {
+            $jdw = JadwalModel::where('merk','like','%'. request('search').'%')->paginate(5);
+        }else{
+            $jdw = JadwalModel::paginate(5);
+        }
         return view('jadwal')
-                    ->with('jdw', $jdw);
+            ->with('k',$jdw);
     }
 
     /**
@@ -27,8 +31,7 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('create_jadwal')
-                ->with('url_form', url('/jadwal'));
+        return view('create_jadwal');
     }
 
     /**

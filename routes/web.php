@@ -33,9 +33,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('produk', ProdukController::class)->parameter('produk','id');
     Route::resource('karyawan', KaryawanController::class)->parameter('karyawan','id');
     Route::resource('pelanggan',PelangganController::class)->parameter('pelanggan','id');
-    Route::resource('jadwal',JadwalController::class)->parameter('jadwal','id'); 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- 
+    Route::resource('jadwal',JadwalController::class)->parameter('jadwal','id');  
 });
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
