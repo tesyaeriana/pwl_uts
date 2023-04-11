@@ -20,6 +20,13 @@ class PelangganController extends Controller
         return view('pelanggan',['pelanggan' => $plg]);
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $pelanggan = PelangganModel::where('nama_pelanggan', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('pelanggan', compact('pelanggan'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -20,6 +20,14 @@ class ProdukController extends Controller
         return view('produk',['produk' => $prd]);
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $produk = ProdukModel::where('nama_produk', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('produk', compact('produk'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    
+
     /**
      * Show the form for creating a new resource.
      *

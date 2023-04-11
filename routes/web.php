@@ -34,6 +34,10 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('karyawan', KaryawanController::class)->parameter('karyawan','id');
     Route::resource('pelanggan',PelangganController::class)->parameter('pelanggan','id');
     Route::resource('jadwal',JadwalController::class)->parameter('jadwal','id');  
+    Route::get('/search', [ProdukController::class, 'search'])->name('search');
+    Route::get('/search', [PelangganController::class, 'search'])->name('search');
+    Route::get('/search', [JadwalController::class, 'search'])->name('search');
+    Route::get('/search', [KaryawanController::class, 'search'])->name('search');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

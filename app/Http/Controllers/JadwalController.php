@@ -20,6 +20,13 @@ class JadwalController extends Controller
         return view('jadwal',['jadwal' => $jdw]);
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $jadwal = JadwalModel::where('kode_jadwal', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('jadwal', compact('jadwal'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

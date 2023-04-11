@@ -20,6 +20,13 @@ class KaryawanController extends Controller
         return view('karyawan',['karyawan' => $krw]);
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->search;
+        $karyawan = KaryawanModel::where('nama', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('karyawan', compact('karyawan'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
