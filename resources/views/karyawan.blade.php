@@ -22,8 +22,8 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($krw->count() > 0)
-                  @foreach ($krw as $i => $k)
+                @if ($karyawan->count() > 0)
+                  @foreach ($karyawan as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->nama}}</td>
@@ -49,6 +49,11 @@
                 @endif
               </tbody>
             </table>
+            Halaman : {{ $karyawan->currentPage() }} <br/>
+	          Jumlah Data : {{ $karyawan->total() }} <br/>
+	          Data Per Halaman : {{ $karyawan->perPage() }} <br/>
+
+            {{ $karyawan->links() }}
           </div>
         </div>
     </div>

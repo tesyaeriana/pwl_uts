@@ -22,8 +22,8 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($prd->count() > 0)
-                  @foreach ($prd as $i => $k)
+                @if ($produk->count() > 0)
+                  @foreach ($produk as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->kode}}</td>
@@ -49,6 +49,11 @@
                 @endif
               </tbody>
             </table>
+            Halaman : {{ $produk->currentPage() }} <br/>
+	          Jumlah Data : {{ $produk->total() }} <br/>
+	          Data Per Halaman : {{ $produk->perPage() }} <br/>
+ 
+            {{ $produk->links() }}
           </div>
         </div>
     </div>

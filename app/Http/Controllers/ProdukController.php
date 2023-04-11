@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use App\Models\ProdukModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProdukController extends Controller
 {
@@ -15,9 +16,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $prd = ProdukModel::all();
-        return view('produk')
-            ->with('prd', $prd);
+        $prd = DB::table('produk')->paginate(5);
+        return view('produk',['produk' => $prd]);
     }
 
     /**

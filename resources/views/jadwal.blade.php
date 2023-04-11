@@ -23,8 +23,8 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($jdw->count() > 0)
-                  @foreach ($jdw as $i => $k)
+                @if ($jadwal ->count() > 0)
+                  @foreach ($jadwal as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->kode_jadwal}}</td>
@@ -51,6 +51,12 @@
                 @endif
               </tbody>
             </table>
+            <br/>
+            Halaman : {{ $jadwal->currentPage() }} <br/>
+	          Jumlah Data : {{ $jadwal->total() }} <br/>
+	          Data Per Halaman : {{ $jadwal->perPage() }} <br/>
+ 
+            {{ $jadwal->links() }}
           </div>
         </div>
     </div>

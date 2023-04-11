@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pelanggan;
 use App\Models\PelangganModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PelangganController extends Controller
 {
@@ -15,9 +16,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $plg = PelangganModel::all();
-        return view('pelanggan')
-        ->with('plg',$plg);
+        $plg = DB::table('pelanggan')->paginate(5);
+        return view('pelanggan',['pelanggan' => $plg]);
     }
 
     /**

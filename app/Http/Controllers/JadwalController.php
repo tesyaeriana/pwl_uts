@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jadwal;
 use App\Models\JadwalModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JadwalController extends Controller
 {
@@ -15,13 +16,8 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        if (request('search')) {
-            $jdw = JadwalModel::where('merk','like','%'. request('search').'%')->paginate(5);
-        }else{
-            $jdw = JadwalModel::paginate(5);
-        }
-        return view('jadwal')
-            ->with('k',$jdw);
+        $jdw = DB::table('jadwal')->paginate(5);
+        return view('jadwal',['jadwal' => $jdw]);
     }
 
     /**
@@ -31,7 +27,8 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        return view('create_jadwal');
+        return view('create_jadwal')
+                ->with('url_form', url('/jadwal'));
     }
 
     /**

@@ -22,8 +22,8 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($plg->count() > 0)
-                  @foreach ($plg as $i => $k)
+                @if ($pelanggan->count() > 0)
+                  @foreach ($pelanggan as $i => $k)
                     <tr>
                       <td>{{++$i}}</td>
                       <td>{{$k->id_pelanggan}}</td>
@@ -49,6 +49,11 @@
                 @endif
               </tbody>
             </table>
+            Halaman : {{ $pelanggan->currentPage() }} <br/>
+	          Jumlah Data : {{ $pelanggan->total() }} <br/>
+	          Data Per Halaman : {{ $pelanggan->perPage() }} <br/>
+ 
+            {{ $pelanggan->links() }}
           </div>
         </div>
     </div>

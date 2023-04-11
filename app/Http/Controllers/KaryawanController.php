@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Karyawan;
 use App\Models\KaryawanModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KaryawanController extends Controller
 {
@@ -15,9 +16,8 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $krw = KaryawanModel::all();
-        return view('karyawan')
-                    ->with('krw', $krw);
+        $krw = DB::table('karyawan')->paginate(5);
+        return view('karyawan',['karyawan' => $krw]);
     }
 
     /**
