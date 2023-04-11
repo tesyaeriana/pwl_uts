@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -39,7 +39,7 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
-        return view('layouts.login');
+        return view('login');
     }
     public function username()
     {
