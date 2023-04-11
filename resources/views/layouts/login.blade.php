@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZiBob Login</title>
+  <title>Login ZiBob PetShop</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/index2.html"><b>Admin</b>LTE</a>
+    <a href="/index2.html"><b>Admin</b>ZiBob PetShop</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -27,7 +27,7 @@
       <form action="{{url('/login')}}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input name="username" type="text" class="form-control" placeholder="Email">
+          <input name="username" type="text" class="form-control" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
