@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Registration Page</title>
+    <title>ZiBob | Registration Page</title>
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,14 +16,17 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
 </head>
+
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <a href="../../index2.html"><b>Admin</b> ZiBob PetShop</a>
         </div>
+
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new admin</p>
+
                 <form action="{{ url("/register") }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
@@ -64,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
@@ -81,11 +86,21 @@
                         <!-- /.col -->
                     </div>
                 </form>
-               
-                <a href="{{url('/login')}}" class="text-center">I already have a admin</a>
+
+                
+                <a href="{{url('/login')}}" class="text-center">I already have a account</a>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->
     </div>
-</div>
-@endsection
+    <!-- /.register-box -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+</body>
+
+</html>
