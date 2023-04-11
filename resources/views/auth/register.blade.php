@@ -21,7 +21,7 @@
         </div>
         <div class="card">
             <div class="card-body register-card-body">
-                <p class="login-box-msg">Register a new membership</p>
+                <p class="login-box-msg">Register a new admin</p>
                 <form action="{{ url("/register") }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
@@ -82,7 +82,7 @@
                     </div>
                 </form>
                
-                <a href="{{url('/login')}}" class="text-center">I already have a membership</a>
+                <a href="{{url('/login')}}" class="text-center">I already have a admin</a>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->
