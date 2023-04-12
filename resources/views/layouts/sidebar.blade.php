@@ -1,4 +1,8 @@
-<div class="sidebar">
+
+<div class="sidebar" >
+  <style>
+    .main-sidebar { background-color: #89375F !important }
+  </style>
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
@@ -30,12 +34,12 @@
           <a href="{{url('/home')}}" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Dashboard</p>
+              Home</p>
           </a>
          
         <li class="nav-item">
           <a href="{{url('/karyawan')}}" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+            <i class="nav-icon fas fa-solid fa-user"></i>
             <p>
               Karyawan 
             </p>
@@ -43,7 +47,7 @@
         </li>
        <li class="nav-item">
           <a href="{{url('/produk')}}" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
+            <i class="nav-icon fas fa-solid fa-list"></i>
             <p>
               Produk 
             </p>
@@ -52,7 +56,7 @@
         </li>
         <li class="nav-item">
           <a href="{{url('/pelanggan')}}" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
+            <i class="nav-icon fas fa-sharp fa-solid fa-users"></i>
             <p>
               Pelanggan 
             </p>
@@ -60,7 +64,7 @@
         </li>
         <li class="nav-item">
           <a href="{{url('/jadwal')}}" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
+            <i class="nav-icon fas fa-sharp fa-regular fa-calendar-week"></i>
             <p>
               Jadwal 
             </p>
