@@ -23,7 +23,13 @@ class JadwalController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->search;
-        $jadwal = JadwalModel::where('kode_jadwal', 'like', "%" . $keyword . "%")->paginate(5);
+        $jadwal = JadwalModel::where('kode_jadwal', 'like', "%" . $keyword . "%")
+                                ->orwhere('nama_pemilik', 'like', "%" . $keyword . "%")
+                                ->orwhere('nama_peliharaan', 'like', "%" . $keyword . "%")
+                                ->orwhere('layanan', 'like', "%" . $keyword . "%")
+                                ->orwhere('tgl_msk', 'like', "%" . $keyword . "%")
+                                ->orwhere('tgl_klr', 'like', "%" . $keyword . "%")
+        ->paginate(5);
         return view('jadwal', compact('jadwal'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

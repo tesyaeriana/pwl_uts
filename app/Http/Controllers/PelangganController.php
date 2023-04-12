@@ -23,7 +23,11 @@ class PelangganController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->search;
-        $pelanggan = PelangganModel::where('nama_pelanggan', 'like', "%" . $keyword . "%")->paginate(5);
+        $pelanggan = PelangganModel::where('nama_pelanggan', 'like', "%" . $keyword . "%")
+                                    ->orwhere('id_pelanggan', 'like', "%" . $keyword . "%")
+                                    ->orwhere('no_hp', 'like', "%" . $keyword . "%")
+        ->paginate(5);
+
         return view('pelanggan', compact('pelanggan'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
