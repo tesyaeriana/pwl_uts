@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/searchPlg', [PelangganController::class, 'search']);
     Route::get('/searchJdw', [JadwalController::class, 'search']);
     Route::get('/searchKrw', [KaryawanController::class, 'search']);
+    Route::delete('pelanggan/{id}','PelangganController@delete');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
