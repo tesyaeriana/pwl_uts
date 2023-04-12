@@ -10,7 +10,7 @@
           <div class="card-body">
             <div class="row d-flex justify-between" style="width: 100%; justify-content: space-between; align-items: center; margin: 0">
               <a href="{{url('pelanggan/create')}}" class="btn -btn sm btn-success my-2">Tambah Data</a>
-              <form class="form" method="get" action="{{ route('search') }}" class="col-md-4" style="padding: 0">
+              <form class="form" method="get" action="{{ url('searchPlg') }}" class="col-md-4" style="padding: 0">
                 <div class="form-group w-100 mb-3">
                     <input type="text" name="search" class="form-control w-75 d-inline" id="search" placeholder="Masukkan keyword">
                     <button type="submit" class="btn btn-primary mb-1">Cari</button>
