@@ -118,8 +118,8 @@ class KaryawanController extends Controller
      */
     public function destroy($id)
     {
-        KaryawanModel::where('id', '=', $id)->delete();
-        return redirect('karyawan')
-            ->with('success', 'Data Berhasil Dihapus');
+        KaryawanModel::where('id','=',$id)->delete();
+
+        return response()->json(['status' => 'Karyawan Berhasil di hapus!']);
     }
 }

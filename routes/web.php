@@ -34,10 +34,13 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('karyawan', KaryawanController::class)->parameter('karyawan','id');
     Route::resource('pelanggan',PelangganController::class)->parameter('pelanggan','id');
     Route::resource('jadwal',JadwalController::class)->parameter('jadwal','id');  
+
     Route::get('/searchPrd', [ProdukController::class, 'search']);
     Route::get('/searchPlg', [PelangganController::class, 'search']);
     Route::get('/searchJdw', [JadwalController::class, 'search']);
     Route::get('/searchKrw', [KaryawanController::class, 'search']);
+
+    Route::delete('karyawan/destroy/{id}', [KaryawanController::class, 'destroy'])->name('karyawan.destroy');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

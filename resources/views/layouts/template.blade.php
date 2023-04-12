@@ -71,6 +71,57 @@
 </div>
 <!-- ./wrapper -->
 
+<script src="{{asset('assets/https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $('.btndelete').click(function (e) {
+            e.preventDefault();
+
+            var deleteid = $(this).closest("tr").find('.delete_id').val();
+
+            swal({
+                    title: "Apakah anda yakin?",
+                    text: "Setelah dihapus, Anda tidak dapat memulihkan Tag ini lagi!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+                        var data = {
+                            "_token": $('input[name=_token]').val(),
+                            'id': deleteid,
+                        };
+                        $.ajax({
+                            type: "DELETE",
+                            url: 'karyawan/destroy/' + deleteid,
+                            data: data,
+                            success: function (response) {
+                                swal(response.status, {
+                                        icon: "success",
+                                    })
+                                    .then((result) => {
+                                        location.reload();
+                                    });
+                            }
+                        });
+                    }
+                });
+        });
+
+    });
+
+</script>
+
 <!-- jQuery -->
 <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
@@ -81,5 +132,6 @@
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
 
 @stack('js')
+
 </body>
 </html>
