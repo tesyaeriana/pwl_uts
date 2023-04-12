@@ -33,6 +33,7 @@
                 @if ($karyawan->count() > 0)
                   @foreach ($karyawan as $i => $k)
                     <tr>
+                      <input type="hidden" class="delete_id" value="{{ $k->id }}">
                       <td>{{++$i}}</td>
                       <td>{{$k->nama}}</td>
                       <td>{{$k->jabatan}}</td>

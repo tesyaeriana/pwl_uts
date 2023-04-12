@@ -23,7 +23,10 @@ class KaryawanController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->search;
-        $karyawan = KaryawanModel::where('nama', 'like', "%" . $keyword . "%")->paginate(5);
+        $karyawan = KaryawanModel::where('nama', 'like', "%" . $keyword . "%")
+                                    ->orwhere('jabatan', 'like', "%" . $keyword . "%")
+        ->paginate(5);
+
         return view('karyawan', compact('karyawan'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -115,8 +118,8 @@ class KaryawanController extends Controller
      */
     public function destroy($id)
     {
-        KaryawanModel::where('id', '=', $id)->delete();
-        return redirect('karyawan')
-            ->with('success', 'Data Berhasil Dihapus');
+        KaryawanModel::where('id','=',$id)->delete();
+
+        return response()->json(['status' => 'Karyawan Berhasil di hapus!']);
     }
 }
