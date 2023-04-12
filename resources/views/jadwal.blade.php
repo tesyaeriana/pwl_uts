@@ -44,7 +44,7 @@
                       <td>
                         <a href="{{url('/jadwal/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
 
-                        <form method="POST" action="{{url('/jadwal/'.$k->id)}}">
+                        <form method="POST" action="{{url('/jadwal/'.$k->id)}}" onsubmit="return confirm('Yakin hapus data?')">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-sm btn-danger">Delete</button>

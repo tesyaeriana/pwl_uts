@@ -42,7 +42,7 @@
                       <td>
                         <a href="{{url('/produk/'. $k->id.'/edit')}}" class="btn btn-sm btn-warning">Edit</a>
 
-                        <form method="POST" action="{{url('/produk/'.$k->id)}}">
+                        <form method="POST" action="{{url('/produk/'.$k->id)}}" onsubmit="return confirm('Yakin hapus data?')">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-sm btn-danger">Delete</button>

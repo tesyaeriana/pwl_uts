@@ -119,7 +119,7 @@ class KaryawanController extends Controller
     public function destroy($id)
     {
         KaryawanModel::where('id','=',$id)->delete();
-
-        return response()->json(['status' => 'Karyawan Berhasil di hapus!']);
+        return redirect('karyawan')
+        ->with('success','data Berhasil Dihapus');
     }
 }
