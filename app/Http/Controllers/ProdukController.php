@@ -23,7 +23,11 @@ class ProdukController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->search;
-        $produk = ProdukModel::where('nama_produk', 'like', "%" . $keyword . "%")->paginate(5);
+        $produk = ProdukModel::where('nama_produk', 'like', "%" . $keyword . "%")
+                                ->orwhere('kode', 'like', "%" . $keyword . "%")
+                                ->orwhere('kategori_produk', 'like', "%" . $keyword . "%")
+        ->paginate(5);
+
         return view('produk', compact('produk'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
